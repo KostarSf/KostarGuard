@@ -14,9 +14,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-@Plugin(id = "kostarguard", name = "KostarGuard", version = "0.1.0-SNAPSHOT",
-        url = "https://https://github.com/KostarSf/KostarGuard",
-        authors = {"KostarSf"}, description = "A server protection for Velocity")
+@Plugin(id = PluginDetails.ID, name = PluginDetails.NAME,
+        version = PluginDetails.VERSION, url = PluginDetails.URL,
+        authors = {PluginDetails.AUTHOR}, description = PluginDetails.DESCRIPTION)
 public class KostarGuard {
     private final ProxyServer server;
     private final Logger logger;
