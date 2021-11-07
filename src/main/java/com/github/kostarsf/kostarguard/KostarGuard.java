@@ -74,7 +74,7 @@ public class KostarGuard {
             logger.info("Bad letter casing for "+name+". A valid is "
                     +validation.getValidUsername()+". Login request rejected.");
 
-            Component component = Component.text("Bad username");
+            Component component = Component.text("Bad username letter casing");
             PreLoginEvent.PreLoginComponentResult result =
                     PreLoginEvent.PreLoginComponentResult.denied(component);
             event.setResult(result);
