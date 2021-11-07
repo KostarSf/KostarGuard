@@ -3,6 +3,7 @@ package com.github.kostarsf.kostarguard;
 import com.google.inject.Inject;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.connection.PreLoginEvent;
+import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
@@ -29,19 +30,21 @@ public class KostarGuard {
         this.server = server;
         this.logger = logger;
         this.dataDirectory = dataDirectory;
+        this.usernamesList = dataDirectory.resolve("usernames.txt");
+    }
 
-        logger.info("Running KostarGuard v0.1.0-SNAPSHOT");
+    @Subscribe
+    public void onInitialize(ProxyInitializeEvent event) {
+        logger.info("Running "+PluginDetails.NAME+" v"+PluginDetails.VERSION);
 
-        usernamesList = getUsernamesList();
+        createUsernamesList();
         UsernamesDatabase.syncWithFile(usernamesList);
 
         int entriesCount = UsernamesDatabase.getEntriesCount();
         logger.info("There is "+entriesCount+" entries in database");
     }
 
-    private Path getUsernamesList() {
-        Path usernamesList = dataDirectory.resolve("usernames.txt");
-
+    private void createUsernamesList() {
         try {
             if (Files.exists(dataDirectory) == false) {
                 Files.createDirectory(dataDirectory);
@@ -53,12 +56,6 @@ public class KostarGuard {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return usernamesList;
-    }
-
-    private void syncUsernamesDatabaseWithList() {
-
     }
 
     @Subscribe
