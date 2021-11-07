@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>KostarGuard</artifactId>
+    <groupId>com.github.kostarsf</groupId>
+    <artifactId>kostarguard</artifactId>
     <version>0.1.1-SNAPSHOT-1</version>
 
     <properties>
