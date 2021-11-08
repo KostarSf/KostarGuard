@@ -1,6 +1,7 @@
 package com.github.kostarsf.kostarguard;
 
 import com.google.inject.Inject;
+import com.velocitypowered.api.command.CommandMeta;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.connection.PreLoginEvent;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
@@ -42,6 +43,10 @@ public class KostarGuard {
 
         int entriesCount = UsernamesDatabase.getEntriesCount();
         logger.info("There is "+entriesCount+" entries in database");
+
+        CommandMeta versionMeta = server.getCommandManager().metaBuilder("kostarguard")
+                .aliases("kg").build();
+        server.getCommandManager().register(versionMeta, new VersionCommand());
     }
 
     private void createUsernamesList() {
