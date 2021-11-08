@@ -3,8 +3,6 @@ package com.github.kostarsf.kostarguard;
 import java.util.ArrayList;
 
 public class UsernameValidation {
-    private static ArrayList<String> usernames;
-
     private boolean newEntry;
     private boolean isPassed;
     private String validUsername;

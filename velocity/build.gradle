@@ -1,0 +1,29 @@
+plugins {
+    id "net.kyori.blossom" version "1.3.0"
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+group = 'com.github.kostarsf.kostarguard'
+project.archivesBaseName = 'KostarGuard-Velocity'
+project.version = '0.1.1-SNAPSHOT-1'
+
+repositories {
+    maven {
+        name 'velocity'
+        url 'https://nexus.velocitypowered.com/repository/maven-public/'
+    }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
+
+    compileOnly 'com.velocitypowered:velocity-api:3.0.1'
+    annotationProcessor 'com.velocitypowered:velocity-api:3.0.1'
+}
+
+blossom {
+    replaceTokenIn('src/main/java/com/github/kostarsf/kostarguard/PluginDetails.java')
+    replaceToken('${project.version}', project.version)
+}
